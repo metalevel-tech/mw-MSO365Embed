@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"[https://www.mediawiki.org/wiki/User:Spas.Z.Spasov Spas Z. Spasov]",
+			"Based on the work of: [https://www.mediawiki.org/wiki/User:Alexia_E._Smith Alexia E. Smith]",
+			"[http://www.bitplan.com/index.php/Wolfgang_Fahl Wolfgang Fahl/ProfiWiki]",
+			"[http://hexmode.com Mark A. Hershberger]",
+			"and [https://clkoerner.com Chris Koerner]"
+		]
+	},
+	"MSO365Embed": "Microsoft Office Online Files Embed in an Article",
+	"mso365embed_description": "Media tag extension for Microsoft Office files, such as: docx, xlsx, pptx.",
+	"embed_mso365_invalid_height": "The height $1 is invalid.",
+	"embed_mso365_invalid_width": "The width $1 is invalid.",
+	"embed_mso365_no_permission": "You do not have permission to embed MS Office files.",
+	"embed_mso365_blank_file": "The URL or file path given to embed a MS Office file is blank.",
+	"embed_mso365_invalid_file": "The URL or file path $1 does not exist.",
+	"embed_mso365_invalid_user": "An invalid user was specified to permission testing to embed this MS Office file.",
+	"right-embed_mso365": "Embed MS Office files into pages"
+}
