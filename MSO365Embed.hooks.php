@@ -5,7 +5,7 @@
  * @author		Spas Z. Spasov (source of the idea: https://github.com/WolfgangFahl/PDFEmbed)
  * @license		LGPLv3 http://opensource.org/licenses/lgpl-3.0.html
  * @package		MSO365Embed
- * @link		https://github.com/pa4080/mw-MSO365Embed
+ * @link		https://github.com/metalevel-tech/mw-MSO365Embed
  *
  */
 class MSO365Embed

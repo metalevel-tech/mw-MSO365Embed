@@ -23,8 +23,8 @@ Clone the extension:
 
 ```bash
 cd $IP/extensions
-sudo git clone https://github.com/pa4080/mw-MSO365Embed.git MSO365Embed # HTTPS
-sudo git clone git@github.com:pa4080/mw-MSO365Embed.git MSO365Embed     # SSH
+sudo git clone https://github.com/metalevel-tech/mw-MSO365Embed.git MSO365Embed # HTTPS
+sudo git clone git@github.com:metalevel-tech/mw-MSO365Embed.git MSO365Embed     # SSH
 ```
 
 To install this extension, add the following to the end of the `LocalSettings.php` file:
@@ -47,7 +47,7 @@ $wgGroupPermissions['*']['embed_MSO365'] = true;
 
 See also
 ---
-* [Extension:MSO365Handler](https://github.com/pa4080/mw-MSO365Handler)
+* [Extension:MSO365Handler](https://github.com/metalevel-tech/mw-MSO365Handler)
 
 References
 ---
