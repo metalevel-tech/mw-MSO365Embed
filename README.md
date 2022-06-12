@@ -1,7 +1,7 @@
 mw-MSO365Embed
 ===
 
-**The extension is tested with MW 1.35.**
+**The extension is tested with MW 1.38.**
 
 MediaWiki media tag extension for Microsoft Office files, such as "xlsx", "docx", "pptx", "xlsm", "pptm", "docm", "ppsx" files by using:
 * `https://view.officeapps.live.com/op/embed.aspx?src=...` or
