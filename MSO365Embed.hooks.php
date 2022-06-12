@@ -144,7 +144,7 @@ class MSO365Embed
             //}
 
             $filename = self::removeFilePrefix($filename);
-            $MSO365File = wfFindFile($filename);
+            $MSO365File =  MediaWiki\MediaWikiServices::getInstance()->getRepoGroup()->findFile($filename);
 
             if ($MSO365File !== false) {
                 $url = $MSO365File->getFullUrl();
