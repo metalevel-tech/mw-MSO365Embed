@@ -44,7 +44,8 @@
         "docm",
         "xlsx",
         "xlsm",
-        "ppsx"
+        "ppsx",
+		"ppsm"
 	],
 	"config": {
 		"MSO365Embed": {
