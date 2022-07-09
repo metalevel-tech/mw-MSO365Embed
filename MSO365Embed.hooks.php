@@ -204,7 +204,7 @@ class MSO365Embed
 
         if ($iframe) {
             $output = Html::rawElement('iframe', [
-                'class' => 'mso365-iframe',
+                'class' => 'mso365-embed',
                 'width' => '100.4%',
                 'height' => '100.4%',
                 'src' => $MSO365SafeUrl,
@@ -213,7 +213,7 @@ class MSO365Embed
             ]);
         } else {
             $output = Html::rawElement('object', [
-                'class' => 'mso365-iframe',
+                'class' => 'mso365-embed',
                 'width' => '100.4%',
                 'height' => '100.4%',
                 'data' => $MSO365SafeUrl,
@@ -226,6 +226,8 @@ class MSO365Embed
 
         return Html::rawElement('div', [
             'class' => 'mso365-div',
+            'width' => $width,
+            'height' => $height,
             'style' => $divStyle
         ], $output);
     }
