@@ -64,11 +64,9 @@ class MSO365Embed
         if (method_exists($mwServices, "getContentLanguage")) {
             $contentLang = $mwServices->getContentLanguage();
 
-            # there are four possible prefixes
+            # there are four possible prefixes: 'File' and 'Media' in English and in the wiki's language
             $ns_media_wiki_lang = $contentLang->getFormattedNsText(NS_MEDIA);
             $ns_file_wiki_lang  = $contentLang->getFormattedNsText(NS_FILE);
-
-            $filename = preg_replace("/^($ns_media_wiki_lang|$ns_file_wiki_lang):/", '', $filename);
 
             if (method_exists($mwServices, "getLanguageFactory")) {
                 $langFactory = $mwServices->getLanguageFactory();
@@ -76,6 +74,8 @@ class MSO365Embed
                 $ns_media_lang_en = $lang->getFormattedNsText(NS_MEDIA);
                 $ns_file_lang_en  = $lang->getFormattedNsText(NS_FILE);
                 $filename = preg_replace("/^($ns_media_wiki_lang|$ns_file_wiki_lang|$ns_media_lang_en|$ns_file_lang_en):/", '', $filename);
+            } else {
+                $filename = preg_replace("/^($ns_media_wiki_lang|$ns_file_wiki_lang):/", '', $filename);
             }
         }
         return $filename;
