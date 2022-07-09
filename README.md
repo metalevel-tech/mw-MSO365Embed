@@ -40,11 +40,11 @@ wfLoadExtension('MSO365Embed');
 If the default configuration needs to be altered add these settings to the `LocalSettings.php` file below `wfLoadExtension('MSO365Embed')`:
 
 ```php
-$wgMSO365Embed['height'] = '696px'; // CSS Width of the wrapper div
-$wgMSO365Embed['width'] = '100%';   // CSS Height of the wrapper div
+$wgMSO365Embed['height'] = '696px'; // HTML tag height attribute of the wrapper DIV
+$wgMSO365Embed['width'] = '100%';   // HTML tag width attribute of the wrapper DIV
 $wgMSO365Embed['style'] = 'border-radius: 0; border: 1px solid #323639; margin: 8px auto 18px;'; // CSS Style ...
 $wgMSO365Embed['action'] = 'embed'; // Actions: embed | view
-$wgMSO365Embed['iframe'] = false;   // 'true' use Html:iframe, 'false' (default) use Html:object
+$wgMSO365Embed['iframe'] = true;   // 'true' (default)  use Html:iframe, 'false' use Html:object
 $wgGroupPermissions['*']['embed_MSO365'] = true;
 ```
 
@@ -56,10 +56,10 @@ $wgGroupPermissions['*']['embed_MSO365'] = true;
 
 ## References
 
-* <https://github.com/WolfgangFahl/PDFEmbed>
-* <https://doc.wikimedia.org/mediawiki-core/master/php>
-* <https://www.mediawiki.org/wiki/Manual:UserFactory.php>
-* <https://www.mediawiki.org/wiki/Manual:Tag_extensions>
-* <https://www.mediawiki.org/wiki/Manual:Hooks/ParserFirstCallInit>
-* <https://doc.wikimedia.org/mediawiki-core/master/php/classHtml.html#a92f023b28be16bb69004084d66a8ac38>
-* <https://stackoverflow.com/a/60809767/6543935>
+* [GitHub/WolfgangFahl/PDFEmbed](https://github.com/WolfgangFahl/PDFEmbed)
+* [Wikimedia/MediaWiki/Docs/Core](https://doc.wikimedia.org/mediawiki-core/master/php)
+* [Wikimedia/MediaWiki/Docs/Core/php/classHtml.html](https://doc.wikimedia.org/mediawiki-core/master/php/classHtml.html#a92f023b28be16bb69004084d66a8ac38)
+* [MediaWiki/Manual:UserFactory.php](https://www.mediawiki.org/wiki/Manual:UserFactory.php)
+* [MediaWiki/Manual:Tag_extensions](https://www.mediawiki.org/wiki/Manual:Tag_extensions)
+* [MediaWiki/Manual:Hooks/ParserFirstCallInit](https://www.mediawiki.org/wiki/Manual:Hooks/ParserFirstCallInit)
+* [Stack Overflow: Embed a Powerpoint in a Web Page](https://stackoverflow.com/a/60809767/6543935)
