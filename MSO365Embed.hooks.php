@@ -11,6 +11,8 @@
  *
  */
 
+use MediaWiki\MediaWikiServices;
+
 class MSO365Embed
 {
 
@@ -39,7 +41,12 @@ class MSO365Embed
         // see https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/extensions/MagicNoCache/+/refs/heads/master/src/MagicNoCacheHooks.php
         global $wgOut;
         $parser->getOutput()->updateCacheExpiry(0);
-        $wgOut->disableClientCache();
+
+        if (method_exists($wgOut, 'disableClientCache')) {
+            $wgOut->disableClientCache();
+        } else {
+            $wgOut->enableClientCache(false);
+        }
     }
 
     /**
@@ -52,12 +59,15 @@ class MSO365Embed
      */
     static public function removeFilePrefix($filename)
     {
-        $mwServices = MediaWiki\MediaWikiServices::getInstance();
+        $mwServices = MediaWikiServices::getInstance();
+
         if (method_exists($mwServices, "getContentLanguage")) {
             $contentLang = $mwServices->getContentLanguage();
-            # there are four possible prefixes
+
+            # there are four possible prefixes: 'File' and 'Media' in English and in the wiki's language
             $ns_media_wiki_lang = $contentLang->getFormattedNsText(NS_MEDIA);
             $ns_file_wiki_lang  = $contentLang->getFormattedNsText(NS_FILE);
+
             if (method_exists($mwServices, "getLanguageFactory")) {
                 $langFactory = $mwServices->getLanguageFactory();
                 $lang = $langFactory->getLanguage('en');
@@ -106,7 +116,7 @@ class MSO365Embed
         } else {
             // https://www.mediawiki.org/wiki/Manual:UserFactory.php
             $revUserName = $parser->getRevisionUser();
-            $userFactory = MediaWiki\MediaWikiServices::getInstance()->getUserFactory();
+            $userFactory = MediaWikiServices::getInstance()->getUserFactory();
             $user = $userFactory->newFromName($revUserName);
         }
 
@@ -114,7 +124,7 @@ class MSO365Embed
             return self::error('embed_mso365_invalid_user');
         }
 
-        if (!MediaWiki\MediaWikiServices::getInstance()->getPermissionManager()->userHasRight($user, 'embed_MSO365')) {
+        if (!MediaWikiServices::getInstance()->getPermissionManager()->userHasRight($user, 'embed_MSO365')) {
             return self::error('embed_mso365_no_permission');
         }
 
@@ -122,11 +132,11 @@ class MSO365Embed
         // so we might reverse some of the parsing again by examining the html
         // whether it contains an anchor <a href= ...
         if (strpos($html, '<a') !== false) {
-            $a = new SimpleXMLElement($html);
+            $anchor = new SimpleXMLElement($html);
             // is there a href element?
-            if (isset($a['href'])) {
+            if (isset($anchor['href'])) {
                 // that's what we want ...
-                $html = $a['href'];
+                $html = $anchor['href'];
             }
         }
 
@@ -139,12 +149,12 @@ class MSO365Embed
 
 
         // if there are no slashes in the name we assume this might be a pointer to a file
-        if (preg_match('~^([^\/]+\.(docx|docm|xlsx|xlsm|pptm|pptx|ppsx|ppsm))(#[0-9]+)?$~', $html, $re)) {
+        if (preg_match('~^([^\/]+\.(docx|docm|xlsx|xlsm|pptm|pptx|ppsx|ppsm))(#[0-9]+)?$~', $html, $matches)) {
             // re contains the groups
-            $filename = $re[1];
+            $filename = $matches[1];
 
             $filename = self::removeFilePrefix($filename);
-            $MSO365File =  MediaWiki\MediaWikiServices::getInstance()->getRepoGroup()->findFile($filename);
+            $MSO365File =  MediaWikiServices::getInstance()->getRepoGroup()->findFile($filename);
 
             if ($MSO365File !== false) {
                 $url = $MSO365File->getFullUrl();
@@ -204,7 +214,7 @@ class MSO365Embed
 
         if ($iframe) {
             $output = Html::rawElement('iframe', [
-                'class' => 'mso365-iframe',
+                'class' => 'mso365-embed',
                 'width' => '100.4%',
                 'height' => '100.4%',
                 'src' => $MSO365SafeUrl,
@@ -213,7 +223,7 @@ class MSO365Embed
             ]);
         } else {
             $output = Html::rawElement('object', [
-                'class' => 'mso365-iframe',
+                'class' => 'mso365-embed',
                 'width' => '100.4%',
                 'height' => '100.4%',
                 'data' => $MSO365SafeUrl,
@@ -226,6 +236,8 @@ class MSO365Embed
 
         return Html::rawElement('div', [
             'class' => 'mso365-div',
+            'width' => $width,
+            'height' => $height,
             'style' => $divStyle
         ], $output);
     }
