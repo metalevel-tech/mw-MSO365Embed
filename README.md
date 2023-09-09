@@ -1,6 +1,6 @@
 # MediaWiki Extension MSO365Embed
 
-**The extension is tested with MW 1.38.**
+***[The extension is tested with MW 1.40](https://wiki.metalevel.tech/wiki/Help:Форматиране_на_MSx_документи)***
 
 MediaWiki media tag extension for Microsoft Office files, such as "docx", "docm", "xlsx", "xlsm", "pptx", "pptm",  "ppsx" and "ppsm" files by using:
 
