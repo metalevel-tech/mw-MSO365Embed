@@ -1,3 +1,5 @@
+![Example 1.](.images/mw-MSO365Embed-01.webp)
+
 # MediaWiki Extension MSO365Embed
 
 ***[The extension is tested with MW 1.40](https://wiki.metalevel.tech/wiki/Help:Форматиране_на_MSx_документи)***
