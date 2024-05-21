@@ -6,7 +6,7 @@
 
 * ***[The extension is tested with MW 1.40](https://wiki.metalevel.tech/wiki/Help:Форматиране_на_MSx_документи)***
 
-MediaWiki media tag extension for Microsoft Office files, such as "docx", "docm", "xlsx", "xlsm", "pptx", "pptm",  "ppsx" and "ppsm" files by using:
+MediaWiki media tag extension for embedding of Microsoft Office files, such as "docx", "docm", "xlsx", "xlsm", "pptx", "pptm",  "ppsx" and "ppsm" files by using:
 
 * `https://view.officeapps.live.com/op/embed.aspx?src=...` or
 * `https://view.officeapps.live.com/op/view.aspx?src=...`
